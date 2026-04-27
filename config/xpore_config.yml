@@ -1,0 +1,10 @@
+data:
+  reference:
+    rep1: results/07_xpore/reference/xpore_outdir
+  alternative:
+    rep1: results/07_xpore/alternative/xpore_outdir
+out: results/07_xpore/diffmod_out
+method: diffmod
+criteria:
+  readcount_min: 20
+  readcount_max: 1000
