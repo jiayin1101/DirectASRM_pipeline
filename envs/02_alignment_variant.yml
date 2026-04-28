@@ -7,3 +7,4 @@ dependencies:
   - minimap2
   - samtools
   - longshot
+  - bcftools
