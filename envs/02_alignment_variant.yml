@@ -1,0 +1,9 @@
+name: directasrm-step02-align-variant
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - minimap2
+  - samtools
+  - longshot

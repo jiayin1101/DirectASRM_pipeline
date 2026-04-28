@@ -1,0 +1,12 @@
+name: directasrm-step06-m6anet
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - python=3.9
+  - samtools
+  - nanopolish
+  - pip
+  - pip:
+      - m6anet
