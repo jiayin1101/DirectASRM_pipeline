@@ -22,16 +22,31 @@ def read_vcf(vcf_file):
         for line in handle:
             if not line.strip() or line.startswith('#'):
                 continue
+
             fields = line.rstrip('\n').split('\t')
             if len(fields) < 5:
                 continue
+
             transcript_id = fields[0]
             position = int(fields[1])
             ref = fields[3].upper()
-            alt = fields[4].split(',')[0].upper()
+            alt_field = fields[4].upper()
+
+            # Skip multi-allelic variants
+            if ',' in alt_field:
+                continue
+
+            alt = alt_field
+
+            # Keep only single-nucleotide variants (SNPs)
             if len(ref) != 1 or len(alt) != 1:
                 continue
-            contents.setdefault(transcript_id, OrderedDict())[position] = {'REF': ref, 'ALT': alt}
+
+            contents.setdefault(transcript_id, OrderedDict())[position] = {
+                'REF': ref,
+                'ALT': alt
+            }
+
     return contents
 
 
