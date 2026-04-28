@@ -1,7 +1,6 @@
 suppressPackageStartupMessages({
   library(GenomicRanges)
   library(GenomicFeatures)
-  library(TxDb.Hsapiens.UCSC.hg38.knownGene)
   library(optparse)
 })
 
@@ -16,7 +15,7 @@ if (is.null(opt$vcf) || is.null(opt$out) || is.null(opt$gtf)) {
   stop('Required arguments: --vcf, --gtf, --out')
 }
 
-# Human-only coordinate conversion using UCSC hg38 TxDb annotation.
+# Human-only coordinate conversion using the user-provided Ensembl GTF annotation.
 txdb <- makeTxDbFromGFF(opt$gtf, format = "gtf")
 tx_exons <- exonsBy(txdb, by='tx', use.names=TRUE)
 tx_exons <- tx_exons[!is.na(names(tx_exons))]
