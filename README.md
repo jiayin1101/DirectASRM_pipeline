@@ -139,10 +139,10 @@ bash scripts/07_xpore_diffmod.sh
 
 ---
 
-## Archival DOI
+## Code availability
 
-For manuscript submission, the GitHub repository should be accompanied by an archived snapshot with a DOI, for example through Zenodo or Figshare.
+The DirectASRM pipeline is publicly available at:
+https://github.com/jiayin1101/DirectASRM_pipeline
 
-Example availability statement:
-
-> The DirectASRM pipeline is available at `https://github.com/<user>/<repo>`. A snapshot of the version used in this study has been archived at Zenodo under DOI: `10.5281/zenodo.xxxxxxx`.
+A snapshot of the version used in this study has been archived on Zenodo:
+https://doi.org/10.5281/zenodo.19851111
