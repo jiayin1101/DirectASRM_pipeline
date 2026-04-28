@@ -50,7 +50,7 @@ For a small human demonstration run, place files as follows:
 data/demo_fast5/sample_fast5_files/
 data/reference/hg38.fa
 data/reference/Homo_sapiens.GRCh38.cdna.all.fa
-data/reference/Homo_sapiens.GRCh38.gtf
+data/reference/Homo_sapiens.GRCh38.109.gtf
 ```
 
 A small FAST5 demo set is included only to illustrate the expected input structure and to allow users to test individual commands on a minimal example. It is not intended to reproduce the full DirectASRM database construction or to represent a complete direct RNA sequencing sample. For real analyses, users should run the pipeline on their own complete direct RNA FAST5 datasets on an appropriate server or HPC system. A full sample-level FAST5 dataset can be hundreds of gigabytes, so the demo data should be treated only as a lightweight test input.
@@ -65,7 +65,7 @@ Edit:
 config/config.sh
 ```
 
-Tool names are called directly as `minimap2`, `samtools`, `longshot`, `nanopolish`, `m6anet`, and `xpore`, assuming they are available in the active environment.
+Tool names are called directly as `minimap2`, `samtools`, `longshot`, `bcftools`, `nanopolish`, `m6anet`, and `xpore`, assuming they are available in the active environment.
 
 ---
 
@@ -134,7 +134,8 @@ bash scripts/07_xpore_diffmod.sh
 - The scripts are not cluster-specific and contain no SLURM/SBATCH directives.
 - The scripts do not contain local absolute paths.
 - The pipeline is designed to be executed step-by-step rather than as a single automated workflow.
-- The human coordinate conversion script uses `BSgenome.Hsapiens.UCSC.hg38` and `TxDb.Hsapiens.UCSC.hg38.knownGene` by default.
+- The human coordinate conversion script uses the user-provided Ensembl GTF annotation file to map genome-coordinate variants to transcript coordinates.
+- When using a UCSC-style genome reference such as `hg38.fa` together with Ensembl GTF/cDNA references, chromosome names are harmonized during coordinate conversion.
 - For other species or genome builds, users should modify the reference genome, transcriptome reference, annotation, and coordinate-conversion logic accordingly.
 
 ---
