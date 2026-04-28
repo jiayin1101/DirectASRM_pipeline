@@ -1,14 +1,15 @@
 # Demo FAST5 files
 
-Place a small set of human direct RNA FAST5 files in:
+This directory is intended to contain a very small set of example human direct RNA FAST5 files:
 
 ```text
 data/demo_fast5/sample_fast5_files/
 ```
 
-Suggested size:
+The provided FAST5 files are **only for demonstration purposes**, allowing users to understand the expected input format and to test individual steps of the pipeline on a minimal dataset.
 
-- Recommended: 10–50 MB
-- Preferably below: 100 MB
+They are **not intended to reproduce the DirectASRM database construction** or to represent a complete sequencing experiment.
 
-For larger files, deposit the FAST5 demo set in Zenodo, Figshare, or GitHub Releases and provide the download link in the main README.
+For real analyses, users should run the pipeline on their own full direct RNA sequencing FAST5 datasets on an appropriate computing environment (e.g., HPC cluster). A complete sample typically contains hundreds of gigabytes of FAST5 files.
+
+In summary, the demo FAST5 files serve only as lightweight test inputs and examples of file structure.
