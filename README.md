@@ -45,7 +45,7 @@ data/reference/Homo_sapiens.GRCh38.cdna.all.fa
 data/reference/Homo_sapiens.GRCh38.gtf
 ```
 
-The demo FAST5 files should be small enough for distribution. For GitHub, we recommend keeping the FAST5 demo set around **10–50 MB**, preferably below **100 MB**. Larger FAST5/reference files should be deposited in Zenodo, Figshare, or GitHub Releases and linked from this README.
+A small FAST5 demo set is included only to illustrate the expected input structure and to allow users to test individual commands on a minimal example. It is not intended to reproduce the full DirectASRM database construction or to represent a complete direct RNA sequencing sample. For real analyses, users should run the pipeline on their own complete direct RNA FAST5 datasets on an appropriate server or HPC system. A full sample-level FAST5 dataset can be hundreds of gigabytes, so the demo data should be treated only as a lightweight test input.
 
 ## Configure paths
 
