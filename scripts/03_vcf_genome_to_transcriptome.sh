@@ -10,5 +10,6 @@ mkdir -p "${OUT_DIR}"
 
 Rscript utils/vcf_g2t_human.R \
   --vcf "${IN_VCF}" \
+  --gtf "${GTF_FILE}" \
   --out "${OUT_DIR}/longshot.transcriptome.vcf" \
   --tmp_dir "${OUT_DIR}"
