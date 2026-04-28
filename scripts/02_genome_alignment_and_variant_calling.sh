@@ -18,6 +18,6 @@ longshot \
 echo "[INFO] Filtering biallelic SNPs..."
 
 bcftools view \
-  -m2 -M2 -v snps \
+  -m2 -M2 -v snps -g het \
   "${OUT_DIR}/longshot.genome.vcf" \
   -o "${OUT_DIR}/longshot.genome.biallelic_snps.vcf"
