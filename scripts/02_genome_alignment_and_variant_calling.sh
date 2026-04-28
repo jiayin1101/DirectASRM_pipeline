@@ -14,3 +14,10 @@ longshot \
   --bam "${OUT_DIR}/genome_aligned.sorted.bam" \
   --ref "${GENOME_FA}" \
   --out "${OUT_DIR}/longshot.genome.vcf"
+
+echo "[INFO] Filtering biallelic SNPs..."
+
+bcftools view \
+  -m2 -M2 -v snps \
+  "${OUT_DIR}/longshot.genome.vcf" \
+  -o "${OUT_DIR}/longshot.genome.biallelic_snps.vcf"
