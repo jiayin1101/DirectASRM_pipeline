@@ -7,20 +7,24 @@ suppressPackageStartupMessages({
 
 option_list <- list(
   make_option('--vcf', type='character', default=NULL, help='Genome-coordinate VCF file generated from human hg38 alignment.'),
+  make_option('--gtf', type='character', default=NULL, help='GTF annotation file.'),
   make_option('--out', type='character', default=NULL, help='Output transcript-coordinate VCF file.'),
   make_option('--tmp_dir', type='character', default=tempdir(), help='Temporary directory.')
 )
 opt <- parse_args(OptionParser(option_list=option_list))
-if (is.null(opt$vcf) || is.null(opt$out)) stop('Required arguments: --vcf and --out')
+if (is.null(opt$vcf) || is.null(opt$out) || is.null(opt$gtf)) {
+  stop('Required arguments: --vcf, --gtf, --out')
+}
 
 # Human-only coordinate conversion using UCSC hg38 TxDb annotation.
-txdb <- TxDb.Hsapiens.UCSC.hg38.knownGene
+txdb <- makeTxDbFromGFF(opt$gtf, format = "gtf")
 tx_exons <- exonsBy(txdb, by='tx', use.names=TRUE)
 tx_exons <- tx_exons[!is.na(names(tx_exons))]
 
 vcf <- read.table(opt$vcf, comment.char='#', stringsAsFactors=FALSE)
 if (ncol(vcf) < 10) stop('Input VCF must contain at least 10 standard VCF columns.')
 colnames(vcf)[1:10] <- c('chrom','pos','id','ref','alt','qual','filter','info','format','sample')
+vcf$chrom <- sub("^chr", "", vcf$chrom)
 
 tx_chr <- unique(as.character(seqnames(unlist(tx_exons))))
 vcf <- vcf[vcf$chrom %in% tx_chr, ]
